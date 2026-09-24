@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { CosmicMedia } from '@/types'
+import Markdown from '@/components/Markdown'
 
 interface DetailPageProps {
   label: string
@@ -55,10 +56,13 @@ export default function DetailPage({
         </div>
       </div>
       {body && (
-        <div
-          className="prose prose-lg max-w-3xl mt-16 prose-headings:font-serif prose-headings:text-ink prose-p:text-ink/80"
-          dangerouslySetInnerHTML={{ __html: body }}
-        />
+        <div className="mt-16">
+          <Markdown
+            content={body}
+            title={title}
+            className="prose prose-lg max-w-3xl prose-headings:font-serif prose-headings:text-ink prose-p:text-ink/80 prose-a:text-accent prose-img:w-full"
+          />
+        </div>
       )}
     </article>
   )
