@@ -7,6 +7,7 @@ interface CardProps {
   label: string
   showListenTag?: boolean
   description?: string
+  portrait?: boolean
 }
 
 export default function Card({
@@ -16,17 +17,20 @@ export default function Card({
   label,
   showListenTag,
   description,
+  portrait = false,
 }: CardProps) {
   const content = (
     <div className="group flex flex-col h-full">
-      <div className="relative w-full aspect-[4/3] overflow-hidden bg-ink/5">
+      <div
+        className={`relative w-full ${portrait ? 'aspect-[4/5]' : 'aspect-[4/3]'} overflow-hidden bg-ink/5`}
+      >
         {imageUrl ? (
           <img
             src={imageUrl}
             alt={title}
             width={800}
-            height={600}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            height={portrait ? 1000 : 600}
+            className={`w-full h-full object-cover ${portrait ? 'object-top origin-top' : ''} transition-transform duration-500 group-hover:scale-105`}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-ink/30 font-mono text-xs uppercase tracking-widest">

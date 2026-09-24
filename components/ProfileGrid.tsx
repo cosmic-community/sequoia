@@ -31,8 +31,9 @@ export default function ProfileGrid({
         )}
         {items.map((item) => {
           const image = item.metadata?.featured_image as { imgix_url?: string } | undefined
+          // Portrait crop anchored to faces so heads are never cut off
           const imageUrl = image?.imgix_url
-            ? `${image.imgix_url}?w=600&h=600&fit=crop&auto=format,compress`
+            ? `${image.imgix_url}?w=800&h=1000&fit=crop&crop=faces,top&auto=format,compress`
             : undefined
 
           return (
@@ -42,6 +43,7 @@ export default function ProfileGrid({
               href={`${basePath}/${item.slug}`}
               imageUrl={imageUrl}
               label={label}
+              portrait
             />
           )
         })}
