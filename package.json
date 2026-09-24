@@ -15,7 +15,9 @@
     "next": "16.0.10",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
-    "@cosmicjs/sdk": "^2.2.0"
+    "@cosmicjs/sdk": "^2.2.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",

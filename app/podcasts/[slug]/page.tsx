@@ -2,6 +2,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getPodcastBySlug } from '@/lib/cosmic'
+import Markdown from '@/components/Markdown'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -54,12 +55,7 @@ export default async function PodcastDetailPage({ params }: PageProps) {
           className="w-full h-auto mt-10 mb-10 object-cover"
         />
       )}
-      {bodyContent && (
-        <div
-          className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-ink prose-p:text-ink/80"
-          dangerouslySetInnerHTML={{ __html: bodyContent }}
-        />
-      )}
+      {bodyContent && <Markdown content={bodyContent} title={podcast.title} />}
     </article>
   )
 }
