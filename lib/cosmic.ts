@@ -1,5 +1,5 @@
 import { createBucketClient } from '@cosmicjs/sdk'
-import type { Article, Company, Podcast, FeedItem } from '@/types'
+import type { Article, Company, Podcast, FeedItem, Founder, Person } from '@/types'
 
 export const cosmic = createBucketClient({
   bucketSlug: process.env.COSMIC_BUCKET_SLUG as string,
@@ -112,6 +112,57 @@ export async function getCompanies(): Promise<Company[]> {
     }
     throw new Error('Failed to fetch companies')
   }
+}
+
+async function getObjectsByType<T extends { title: string }>(type: string): Promise<T[]> {
+  try {
+    const response = await cosmic.objects
+      .find({ type })
+      .props(['id', 'slug', 'title', 'metadata', 'type', 'created_at', 'modified_at'])
+      .depth(1)
+    const items = response.objects as T[]
+    return items.sort((a, b) => a.title.localeCompare(b.title))
+  } catch (error) {
+    if (hasStatus(error) && error.status === 404) {
+      return []
+    }
+    throw new Error(`Failed to fetch ${type}`)
+  }
+}
+
+async function getObjectBySlug<T>(type: string, slug: string): Promise<T | null> {
+  try {
+    const response = await cosmic.objects
+      .findOne({ type, slug })
+      .props(['id', 'slug', 'title', 'content', 'metadata', 'type', 'created_at', 'modified_at'])
+      .depth(1)
+    return response.object as T
+  } catch (error) {
+    if (hasStatus(error) && error.status === 404) {
+      return null
+    }
+    throw new Error(`Failed to fetch ${type}`)
+  }
+}
+
+export function getCompanyBySlug(slug: string): Promise<Company | null> {
+  return getObjectBySlug<Company>('company', slug)
+}
+
+export function getFounders(): Promise<Founder[]> {
+  return getObjectsByType<Founder>('founder')
+}
+
+export function getFounderBySlug(slug: string): Promise<Founder | null> {
+  return getObjectBySlug<Founder>('founder', slug)
+}
+
+export function getPeople(): Promise<Person[]> {
+  return getObjectsByType<Person>('people')
+}
+
+export function getPersonBySlug(slug: string): Promise<Person | null> {
+  return getObjectBySlug<Person>('people', slug)
 }
 
 export async function getHomepageFeed(limit = 8): Promise<FeedItem[]> {

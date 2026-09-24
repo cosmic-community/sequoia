@@ -43,4 +43,22 @@ export interface Company extends CosmicObject {
   }
 }
 
+export interface Founder extends CosmicObject {
+  type: 'founder'
+  metadata: {
+    seo_description?: string
+    featured_image?: CosmicMedia
+    content?: string
+  }
+}
+
+export interface Person extends CosmicObject {
+  type: 'people'
+  metadata: {
+    seo_description?: string
+    featured_image?: CosmicMedia
+    content?: string
+  }
+}
+
 export type FeedItem = (Article | Podcast) & { feedType: 'article' | 'podcast' }

@@ -27,7 +27,13 @@ export default async function CompaniesPage() {
             : undefined
 
           return (
-            <Card key={company.id} title={company.title} imageUrl={imageUrl} label="Company" />
+            <Card
+              key={company.id}
+              title={company.title}
+              href={`/companies/${company.slug}`}
+              imageUrl={imageUrl}
+              label="Company"
+            />
           )
         })}
       </div>

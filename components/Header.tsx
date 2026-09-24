@@ -7,7 +7,25 @@ export default function Header() {
         <Link href="/" className="font-sans font-bold text-xl tracking-tight uppercase text-ink">
           Sequoia
         </Link>
-        <nav className="flex items-center gap-6 md:gap-8">
+        <nav className="flex flex-wrap items-center justify-end gap-x-6 gap-y-2 md:gap-8">
+          <Link
+            href="/founders"
+            className="font-mono text-xs uppercase tracking-widest text-ink hover:text-accent transition-colors"
+          >
+            Our Founders
+          </Link>
+          <Link
+            href="/companies"
+            className="font-mono text-xs uppercase tracking-widest text-ink hover:text-accent transition-colors"
+          >
+            Our Companies
+          </Link>
+          <Link
+            href="/team"
+            className="font-mono text-xs uppercase tracking-widest text-ink hover:text-accent transition-colors"
+          >
+            Our Team
+          </Link>
           <Link
             href="/stories"
             className="font-mono text-xs uppercase tracking-widest text-ink hover:text-accent transition-colors"
@@ -19,12 +37,6 @@ export default function Header() {
             className="font-mono text-xs uppercase tracking-widest text-ink hover:text-accent transition-colors"
           >
             Podcasts
-          </Link>
-          <Link
-            href="/companies"
-            className="font-mono text-xs uppercase tracking-widest text-ink hover:text-accent transition-colors"
-          >
-            Companies
           </Link>
         </nav>
       </div>
