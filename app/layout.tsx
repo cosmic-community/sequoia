@@ -8,6 +8,14 @@ import DemoBanner from '@/components/DemoBanner'
 export const metadata: Metadata = {
   title: 'Sequoia — We help the daring build legendary companies.',
   description: 'Sequoia partners with daring founders from idea to IPO and beyond.',
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
 }
 
 export default function RootLayout({
