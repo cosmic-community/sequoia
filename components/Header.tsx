@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Header() {
   return (
-    <header className="border-b border-ink/10">
+    <header className="sticky top-0 z-50 bg-cream border-b border-ink/10">
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 flex items-center justify-between">
         <Link href="/" className="font-sans font-bold text-xl tracking-tight uppercase text-ink">
           Sequoia
