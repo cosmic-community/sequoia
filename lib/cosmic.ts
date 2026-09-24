@@ -24,11 +24,14 @@ export function getMetafieldValue(field: unknown): string {
   return ''
 }
 
-function getDateValue(obj: {
-  metadata?: { published_at?: string }
-  created_at: string
-}): number {
-  const dateStr = obj.metadata?.published_at || obj.created_at
+function getDateValue(obj: { metadata?: unknown; created_at: string }): number {
+  let publishedAt: string | undefined
+  const meta = obj.metadata
+  if (typeof meta === 'object' && meta !== null && 'published_at' in meta) {
+    const value = (meta as { published_at?: unknown }).published_at
+    if (typeof value === 'string' && value) publishedAt = value
+  }
+  const dateStr = publishedAt || obj.created_at
   const t = new Date(dateStr).getTime()
   return isNaN(t) ? 0 : t
 }
