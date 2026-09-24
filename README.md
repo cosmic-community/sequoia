@@ -1,5 +1,7 @@
 # Sequoia
 
+> **⚠️ Demo site:** This is a demo site built with [Cosmic](https://www.cosmicjs.com). It is not affiliated with Sequoia Capital. The site is marked `noindex, nofollow` and `robots.txt` blocks all crawlers.
+
 ![App Preview](https://imgix.cosmicjs.com/a5fc77b0-b7c6-11f1-a43a-a32884c478cc-CleanShot-2026-09-23-at-20-18-362x.png?w=1200&h=630&fit=crop&auto=format,compress)
 
 A lean, minimal venture capital firm website styled after sequoiacap.com, built with Next.js and powered entirely by Cosmic CMS.
