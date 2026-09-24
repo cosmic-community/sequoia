@@ -3,6 +3,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CosmicBadge from '@/components/CosmicBadge'
+import DemoBanner from '@/components/DemoBanner'
 
 export const metadata: Metadata = {
   title: 'Sequoia — We help the daring build legendary companies.',
@@ -34,6 +35,7 @@ export default function RootLayout({
               <script defer src="https://insights.cosmicinsights.dev/script.js" data-project="6ab40ca6e080f7a3ab756b9c"></script>
       </head>
       <body className="bg-cream text-ink font-sans antialiased">
+        <DemoBanner />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
